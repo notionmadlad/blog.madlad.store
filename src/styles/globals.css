@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+.notion-collection-page-properties {
+  display: none !important;
+}
+
+.notion {
+  font-family: var(--font-poppins) !important;
+}
+
+@layer base {
+  .flip-y {
+    transform: rotateY(180deg);
+  }
+
+  .theme-transition {
+    transition: none 300ms !important;
+  }
+
+  .theme-transition * {
+    transition: none 300ms !important;
+  }
+
+  * {
+    scrollbar-color: var(--foreground) var(--background);
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  .drop {
+    top: -80px;
+    animation: drop 1000ms ease-in-out 1500ms forwards;
+  }
+
+  .navbar {
+    width: 147px;
+    animation: navbar 1500ms ease-in-out 2500ms forwards;
+  }
+
+  .navbar .links-list {
+    width: 0%;
+    animation: links-list 1000ms ease-in-out 4000ms forwards;
+  }
+
+  @keyframes drop {
+    from {
+      top: -80px;
+    }
+
+    to {
+      top: 0;
+    }
+  }
+
+  @keyframes navbar {
+    from {
+      width: 147px;
+    }
+
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes links-list {
+    from {
+      width: 0px;
+    }
+
+    to {
+      width: 100%;
+    }
+  }
+
+  html,
+  body {
+    @apply m-0 h-full w-full overflow-x-hidden bg-background p-0 font-poppins text-foreground;
+  }
+
+  body:has(.modal-backdrop) {
+    @apply overflow-hidden !pr-[15px];
+  }
+
+  body:has(.modal-backdrop) > nav > div {
+    @apply pr-[15px];
+  }
+
+  .transition-all {
+    @apply ease-curve;
+  }
+
+  .statements ul {
+    @apply flex list-decimal flex-col gap-5 pl-5 text-[16px] text-foreground;
+  }
+
+  .statements li:not(:first-child) {
+    @apply mt-5;
+  }
+
+  .statements li :not(:first-child) {
+    @apply mt-5;
+  }
+
+  div:has(> .sj-powered-by) {
+    @apply !hidden;
+  }
+
+  .sj-card {
+    @apply cursor-pointer !bg-card shadow-none transition-all duration-500 ease-curve *:!text-foreground hover:bg-secondary;
+  }
+
+  .sj-text-card {
+    @apply !bg-secondary;
+  }
+
+  .modal-backdrop {
+    @apply absolute bottom-0 left-0 right-0 top-0 z-50 flex items-center justify-center bg-[#000000b3];
+  }
+
+  .gumroad-iframe > iframe {
+    @apply mx-auto max-w-[calc(1152px_-_5rem)] rounded-lg !bg-card;
+  }
+
+  .blue-gradient {
+    @apply bg-[linear-gradient(180deg,_rgba(39,_0,_157,_0)_30%,_#005ea5_100%)] blur-[80px];
+  }
+
+  .pink-gradient {
+    @apply bg-[linear-gradient(90deg,_#ff7bfd_30%,_#ff18fb_100%)] blur-[160px];
+  }
+
+  .white-gradient {
+    @apply bg-[rgba(185,_185,_185,_0.6)] blur-[120px];
+  }
+}
