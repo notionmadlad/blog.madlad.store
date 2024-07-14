@@ -9,7 +9,7 @@ import { formatDatabase, queryDatabase } from "@/lib/notion";
 import { MotionDiv } from "@/components/Motion";
 import { Suspense } from "react";
 
-const getPosts = cache(() => queryDatabase().then(formatDatabase), ["/", "getPosts"], { revalidate: 60 * 60 });
+const getPosts = cache(() => queryDatabase().then(formatDatabase).then(database => database.filter(item => item.Status.name === "Published")), ["/", "getPosts"], { revalidate: 60 * 60 });
 
 export default async function Home() {
   const database = await getPosts();
